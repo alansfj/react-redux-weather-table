@@ -1,39 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
+
+import { selectApiData } from "../redux/api/api.selectors";
+import { selectCurrentPage } from "../redux/pagination/pagination.selectors";
 
 import { TableRow } from "./TableRow";
 
-import { selectApiData } from "../redux/api/api.selectors";
-// import { selectApiIsFetching } from "../redux/api/api.selectors";
-
-import { selectCurrentPage } from "../redux/pagination/pagination.selectors";
-
-import { useSelector } from "react-redux";
+const numberOfRows = 10;
 
 export const Table = () => {
   const dataArray = useSelector(selectApiData);
-  console.log(dataArray);
 
   const page = useSelector(selectCurrentPage);
-  console.log("page:", page);
 
-  // const isFetching = useSelector(selectApiIsFetching)
-
-  const rowsPerPageArray = dataArray.slice(page * 10 - 10, page * 10);
-
-  console.log(rowsPerPageArray);
-
-  // let rowsPerPageArray;
-
-  // let rowsPerPageArray;
-
-  // useEffect(() => {
-  //   rowsPerPageArray = dataArray.slice(page * 10 - 10, page * 10);
-  //   console.log(rowsPerPageArray);
-  // }, [page]);
+  const rowsPerPageArray = dataArray.slice(
+    page * numberOfRows - numberOfRows,
+    page * numberOfRows
+  );
 
   return (
-    <div>
-      Table
+    <div className="table-container">
       <table className="table table-striped table-hover">
         <thead>
           <tr>

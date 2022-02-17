@@ -1,27 +1,29 @@
-import React, { useEffect } from "react";
-import { Table } from "../components/Table";
-
-// import { useDispatch } from "react-redux";
-// import {
-//   selectData,
-//   selectIsFetching,
-// } from "../redux/fetchedData/fetchedData.selectors";
-
-// import { fetchData } from "../redux/api/apiSlice";
+import React from "react";
+import { useSelector } from "react-redux";
 
 import { selectApiIsFetching } from "../redux/api/api.selectors";
 
-import { useSelector } from "react-redux";
+import { Table } from "../components/Table";
 import { PaginationButtons } from "../components/PaginationButtons";
+import { PaginationCount } from "../components/PaginationCount";
+import { Spinner } from "../components/Spinner";
 
 export const Homepage = () => {
   const isFetching = useSelector(selectApiIsFetching);
 
   return (
-    <div>
-      Homepage
-      {isFetching ? "Cargando..." : <Table></Table>}
-      <PaginationButtons></PaginationButtons>
+    <div className="container-xxl card">
+      <div className="row">
+        {isFetching ? (
+          <Spinner></Spinner>
+        ) : (
+          <>
+            <Table></Table>
+            <PaginationCount></PaginationCount>
+            <PaginationButtons></PaginationButtons>
+          </>
+        )}
+      </div>
     </div>
   );
 };

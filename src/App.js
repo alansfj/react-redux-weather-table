@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import "./App.css";
 import { DetailsPage } from "./pages/DetailsPage";
 
 import { Homepage } from "./pages/Homepage";

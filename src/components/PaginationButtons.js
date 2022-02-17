@@ -11,9 +11,16 @@ export const PaginationButtons = () => {
   const currentPage = useSelector(selectCurrentPage);
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        padding: "1rem",
+      }}
+    >
       {currentPage !== 1 && (
         <button
+          style={{ margin: "0 0.5rem" }}
           type="button"
           class="btn btn-primary"
           onClick={() => {
@@ -26,6 +33,7 @@ export const PaginationButtons = () => {
 
       {currentPage !== 10 && (
         <button
+          style={{ margin: "0 0.5rem" }}
           type="button"
           class="btn btn-primary"
           onClick={() => {
